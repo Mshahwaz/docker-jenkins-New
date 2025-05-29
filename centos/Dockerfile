@@ -1,5 +1,9 @@
-FROM centos:latest
-MAINTAINER James Turnbull "james@example.com"
-ENV REFRESHED_AT 2016-06-01
-RUN yum -y install ruby rubygems rubygem-rake
-RUN gem install --no-rdoc --no-ri rspec ci_reporter_rspec
+FROM rockylinux:8
+LABEL maintainer="shah455"
+ENV REFRESHED_AT=2025-06-01
+
+RUN dnf -y update && \
+    dnf -y install ruby rubygems rubygem-rake && \
+    gem install --no-document rspec ci_reporter_rspec && \
+    dnf clean all
+
